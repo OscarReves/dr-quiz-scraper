@@ -1,4 +1,4 @@
-# Project Name
+# The DR News Quiz Scraper
 
 This is a scraper designed for scraping the weekly [news quiz](https://www.dr.dk/quiz/nyheder) hosted by Danmarks Radio. 
 
