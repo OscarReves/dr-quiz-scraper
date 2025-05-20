@@ -50,6 +50,9 @@ class QuizScraper():
         print("Collecting URLs for avaialable quizzes in 2025...")
         quiz_urls = [self.driver.current_url]
         while self.next_quiz_exists():
+            if len(quiz_urls) == max_quizzes:
+                print("Stopped due to max constraint")
+                break
             if debug:
                 print("Next quiz exists")
             self.click_next_quiz()
@@ -58,9 +61,6 @@ class QuizScraper():
             url = self.driver.current_url
             if debug: print(f"URL: {url}")
             quiz_urls.append(url)
-            if len(quiz_urls) == max_quizzes:
-                print("Stopped due to max constraint")
-                break
         self.driver.get(self.start_url)
         self.quiz_urls = quiz_urls
         print(f"{len(self.quiz_urls)} quiz URLs found")
@@ -188,12 +188,15 @@ class QuizScraper():
         except TimeoutException:
             return False
 
-    def save_quiz_to_jsonl(self, week: int, res: dict, base_path: str = "results/2025",):
-        filename = f"week_{week}.jsonl"
-        path = Path(base_path) / filename
+    def save_quiz_to_jsonl(self, week: int, res: dict, base_path: str = "results/2025"):
+        path = Path(base_path)
+        path.mkdir(parents=True, exist_ok=True)
 
-        print(f"Saving results to: {path}")
-        with path.open("a", encoding="utf-8") as f:
+        filename = f"week_{week}.jsonl"
+        file_path = path / filename
+
+        print(f"Saving results to: {file_path}")
+        with file_path.open("a", encoding="utf-8") as f:
             for i, (q, opts, correct_idx) in enumerate(zip(res["questions"], res["answers"], res["correct"])):
                 f.write(json.dumps({
                     "week": week,
@@ -204,6 +207,7 @@ class QuizScraper():
                         "correct_idx": correct_idx
                     }
                 }, ensure_ascii=False) + "\n")
+
 
     def quit(self):
         print("Closing driver")

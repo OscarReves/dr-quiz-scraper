@@ -20,6 +20,13 @@ pip install -r requirements.txt
 
 ## Usage
 
+To test a single quiz, run:
+
+```bash
+python3 -m scripts.test
+```
+
+
 To scrape all quizzes for 2025, simply run:
 
 ```bash
