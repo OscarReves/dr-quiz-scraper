@@ -1,6 +1,6 @@
 scraper_env
-notebooks/
 results/
+notebooks/
 !results/.gitkeep
 *.pyc
 *.egg-info/
