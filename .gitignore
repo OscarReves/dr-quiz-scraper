@@ -1,0 +1,11 @@
+scraper_env
+notebooks/
+results/
+!results/.gitkeep
+*.pyc
+*.egg-info/
+.env
+.vscode/
+.ipynb_checkpoints/
+.DS_Store
+
