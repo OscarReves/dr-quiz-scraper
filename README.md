@@ -28,3 +28,7 @@ python3 -m scripts.scrape_quizzes_2025.py
 
 Note that brute-forcing takes time because each failure means that the scraper needs to click through the previous questions. 
 Correct results are saved, but waiting for javascript elements to load takes time. 
+
+## Future 
+
+This is a work in progress. I intend to expand the scraper to multiple years and multiple processes 
