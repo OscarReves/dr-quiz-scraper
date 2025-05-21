@@ -36,6 +36,13 @@ python3 -m scripts.scrape_quizzes_2025
 Note that brute-forcing takes time because each failure means that the scraper needs to click through the previous questions. 
 Correct results are saved, but waiting for javascript elements to load takes time. 
 
+## Intended use 
+
+The resulting dataset is intended to be used as a knowledge-intensive question-answering dataset for testing retrieval augmented generation in Danish. 
+
+Thus the focus is on quizzes from 2025, relating to events ocurring after the cut-off date for many models. 
+
+
 ## Future 
 
 This is a work in progress. I intend to expand the scraper to multiple years and multiple processes 
