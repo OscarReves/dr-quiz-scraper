@@ -33,6 +33,12 @@ To scrape all quizzes for 2025, simply run:
 python3 -m scripts.scrape_quizzes_2025
 ```
 
+To scrape up to n quizzes:
+
+```bash
+python3 -m scripts.scrape_quizzes_2025 n
+```
+
 Note that brute-forcing takes time because each failure means that the scraper needs to click through the previous questions. 
 Correct results are saved, but waiting for javascript elements to load takes time. 
 
